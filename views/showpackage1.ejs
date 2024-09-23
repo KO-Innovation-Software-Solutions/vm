@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OBD Data</title>
+    <link rel="stylesheet" href="/css/style.css">
+
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    color: #333;
+}
+
+table.bordered {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+table.bordered th, table.bordered td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+table.bordered th {
+    background-color: #f2f2f2;
+    text-align: left;
+}
+
+table.bordered tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table.bordered tr:hover {
+    background-color: #ddd;
+}
+    </style>
+
+</head>
+<body>
+    <h1>OBD Data</h1>
+
+ <table class="bordered">
+        <thead>
+            <tr>
+                <th>Device ID</th>
+                <th>Coordinates (Lat, Long)</th>
+                <th>UTC Time</th>
+                <th>On Time</th>
+                <th>Mileage</th>
+                <th>Current Trip</th>
+                <th>Fuel Consumption</th>
+                <th>Current Trip Fuel Consumption</th>
+                <th>Speed</th>
+                <th>Online</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% obdData.forEach(data => { %>
+                <tr>
+                    <td><%= data.DeviceID %></td>
+                    <td><%= data.Latitude %>, <%= data.Longtitude %></td>
+                    <td><%= data.UTC %></td>
+                    <td><%= data.Accontime %></td>
+                    <td><%= data.Total_Mileage %></td>
+                    <td><%= data.Current_Trip_Mileage %></td>
+                    <td><%= data.Total_Fuel_Consumption %></td>
+                    <td><%= data.Current_Trip_Fuel %> </td>
+                    <td><%= data.Speed %> KM</td>
+                    <td><%= data.online %></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</body>
+</html>
